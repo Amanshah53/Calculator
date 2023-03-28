@@ -28,3 +28,18 @@ themeToggleBtn.onclick = () => {
   themeToggleBtn.classList.toggle("active");
   isDark = !isDark;
 };
+
+
+addEventListener('keydown', (e) => {
+    if (e.key == "Backspace") {
+      let string = display.innerText.toString();
+      display.innerText = string.substr(0, string.length - 1);
+    } else if ((e.key === "=" || e.key === 'Enter') && (display.innerText !== "" && display.innerText !== "Empty!")) {
+      display.innerText = eval(display.innerText);
+    } else if ((e.key === "=" || e.key === 'Enter') && (display.innerText === "" ||  display.innerText === "Empty!")) {
+      display.innerText = "Empty!";
+      setTimeout(() => (display.innerText = ""), 600);
+    } else {
+      display.innerText += e.key;
+    }
+})
